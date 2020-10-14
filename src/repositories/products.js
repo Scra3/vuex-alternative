@@ -15,14 +15,9 @@ export const productsMutators = {
   add: product => {
     productsState.all.push(product);
   },
-  remove: productToRemove => {
-    const index = productsState.all.findIndex(
-      consumer => consumer.id !== productToRemove.id
-    );
-    productsState.all.splice(index, 1);
-  },
   async fetchProducts() {
     await sleep(1000);
+    productsState.all.splice(0, productsState.all.length);
     products.forEach(product => this.add(product));
   }
 };

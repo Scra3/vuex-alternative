@@ -18,7 +18,7 @@ export default {
     product: { type: Object, required: true }
   },
   created() {
-    setTimeout(() => (this.isAlertVisible = false), 3000);
+    setTimeout(() => (this.isAlertVisible = false), 1500);
   }
 };
 </script>

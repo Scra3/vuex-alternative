@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { productsPlugin } from "@/repositories/products";
-import { shoppingCartPlugin } from "@/repositories/shopping_cart";
+import { shoppingCartPlugin } from "@/repositories/shoppingCart";
 
 export default () => {
   Vue.use(productsPlugin);

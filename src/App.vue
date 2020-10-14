@@ -1,38 +1,38 @@
 <template>
   <v-app>
     <v-app-bar dark app>
-      <v-toolbar-title>My e-commerce</v-toolbar-title>
+      <v-toolbar-title class="app--title" @click="$router.push('/')"
+        >My e-commerce</v-toolbar-title
+      >
       <v-spacer></v-spacer>
-      <v-btn icon>
-        {{ productsInShoppingCart ? productsInShoppingCart.length : 0 }}
+      <v-btn icon x-large @click="$router.push('/shoppingCart')">
+        {{ productsInShoppingCart.length }}
         <v-icon>mdi-basket</v-icon>
       </v-btn>
     </v-app-bar>
+
     <v-main>
       <v-container>
-        <Alert
-          :key="productsInShoppingCart.length"
-          v-if="productsInShoppingCart.length > 0"
-          :product="productsInShoppingCart[productsInShoppingCart.length - 1]"
-        />
-        <Products />
+        <router-view></router-view>
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Products from "./components/Products";
-import Alert from "./components/Alert";
-
 export default {
   name: "App",
-  components: {
-    Alert,
-    Products
-  },
   data() {
-    return { productsInShoppingCart: this.$shoppingCartState.products };
+    return {
+      productsInShoppingCart: this.$shoppingCartState.products
+    };
   }
 };
 </script>
+<style scoped lang="scss">
+.app {
+  &--title {
+    cursor: pointer;
+  }
+}
+</style>
