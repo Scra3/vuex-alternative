@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     add() {
-      this.$shoppingCartStateMutators.add(this.product);
+      this.$shoppingCartMutators.add(this.product);
     }
   }
 };

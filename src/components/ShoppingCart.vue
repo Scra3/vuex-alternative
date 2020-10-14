@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     remove(product) {
-      this.$shoppingCartStateMutators.remove(product);
+      this.$shoppingCartMutators.remove(product);
     }
   }
 };

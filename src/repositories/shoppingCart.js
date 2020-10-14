@@ -3,7 +3,7 @@ import EventBus from "../event-bus";
 export const shoppingCartPlugin = {
   install: function(Vue) {
     Vue.prototype.$shoppingCartState = shoppingCartState;
-    Vue.prototype.$shoppingCartStateMutators = shoppingCartStateMutators;
+    Vue.prototype.$shoppingCartMutators = shoppingCartMutators;
   }
 };
 
@@ -11,7 +11,7 @@ export const shoppingCartState = {
   products: []
 };
 
-export const shoppingCartStateMutators = {
+export const shoppingCartMutators = {
   add: product => {
     EventBus.$emit(
       "NEW_PRODUCT_IN_SHOPPING_CART",
