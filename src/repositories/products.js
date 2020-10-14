@@ -1,3 +1,5 @@
+import { sleep } from "../helpers";
+
 export const productsPlugin = {
   install: function(Vue) {
     Vue.prototype.$productsState = productsState;
@@ -24,10 +26,6 @@ export const productsMutators = {
     products.forEach(product => this.add(product));
   }
 };
-
-function sleep(time) {
-  return new Promise(resolve => setTimeout(resolve, time));
-}
 
 const products = [
   {

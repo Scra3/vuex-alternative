@@ -1,30 +1,38 @@
 <template>
-  <div>
-    <v-app-bar color="deep-purple accent-4" dense dark>
+  <v-app>
+    <v-app-bar dark app>
       <v-toolbar-title>My e-commerce</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon>
+        {{ productsInShoppingCart ? productsInShoppingCart.length : 0 }}
         <v-icon>mdi-basket</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-app>
-      <Products />
-    </v-app>
-  </div>
+    <v-main>
+      <v-container>
+        <Alert
+          :key="productsInShoppingCart.length"
+          v-if="productsInShoppingCart.length > 0"
+          :product="productsInShoppingCart[productsInShoppingCart.length - 1]"
+        />
+        <Products />
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
 import Products from "./components/Products";
+import Alert from "./components/Alert";
 
 export default {
   name: "App",
-
   components: {
+    Alert,
     Products
   },
-
-  data: () => ({
-    //
-  })
+  data() {
+    return { productsInShoppingCart: this.$shoppingCartState.products };
+  }
 };
 </script>

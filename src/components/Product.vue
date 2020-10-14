@@ -3,7 +3,7 @@
     <h3>{{ product.name }}</h3>
     <span class="product--description">{{ product.description }}</span>
     <span class="product--price">{{ product.price }}</span>
-    <v-btn color="primary">
+    <v-btn color="primary" @click="add()">
       Add
       <v-icon right>
         mdi-plus
@@ -18,6 +18,11 @@ export default {
     product: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    add() {
+      this.$shoppingCartStateMutators.add(this.product);
     }
   }
 };

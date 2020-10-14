@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <div>
     <template v-if="isLoading">
       <v-skeleton-loader type="card"></v-skeleton-loader>
       <v-skeleton-loader type="card"></v-skeleton-loader>
@@ -12,7 +12,7 @@
         :key="product.id"
       />
     </template>
-  </v-container>
+  </div>
 </template>
 
 <script>
