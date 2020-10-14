@@ -2,8 +2,11 @@ import Vue from "vue";
 import App from "./App.vue";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
+import loadRepositories from "./plugins/repositories";
 
 Vue.config.productionTip = false;
+
+loadRepositories();
 
 new Vue({
   store,
