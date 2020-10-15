@@ -1,6 +1,6 @@
 <template>
   <div class="alert">
-    <v-alert v-if="isAlertVisible" dense text type="success">
+    <v-alert v-show="isAlertVisible" dense text type="success">
       <span>
         <strong>{{ lastProductAdded.name }}</strong>
         is added in you shopping cart.
@@ -25,13 +25,10 @@ export default {
     }
   },
   mounted() {
-    const self = this;
     EventBus.$on("NEW_PRODUCT_IN_SHOPPING_CART", () => {
-      self.isAlertVisible = true;
+      this.isAlertVisible = true;
+      setTimeout(() => (this.isAlertVisible = false), 1500);
     });
-  },
-  created() {
-    setTimeout(() => (this.isAlertVisible = false), 1500);
   }
 };
 </script>

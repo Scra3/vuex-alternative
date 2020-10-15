@@ -7,11 +7,14 @@
     </template>
     <template v-else>
       <Alert />
-      <Product
-        :product="product"
-        v-for="product in products"
-        :key="`p-${product.id}`"
-      />
+      <div class="products">
+        <Product
+          class="products--product"
+          :product="product"
+          v-for="product in products"
+          :key="`p-${product.id}`"
+        />
+      </div>
     </template>
   </div>
 </template>
@@ -41,3 +44,14 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &--product {
+    width: 70em;
+  }
+}
+</style>

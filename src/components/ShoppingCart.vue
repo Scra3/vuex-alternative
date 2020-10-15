@@ -7,7 +7,16 @@
     >
       There are no products
     </span>
-    <template v-else class="shopping-cart--products">
+    <template v-else>
+      <section class="shopping-cart--total">
+        <h2>
+          Total:
+          <span class="shopping-cart--total--price">{{ totalPrice }}</span>
+        </h2>
+        <v-btn color="success">
+          Place order
+        </v-btn>
+      </section>
       <v-card
         elevation="2"
         class="shopping-cart--product"
@@ -60,16 +69,11 @@ export default {
 
 <style scoped lang="scss">
 .shopping-cart {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
 
   &--information-message {
     display: flex;
-    justify-content: center;
-  }
-
-  &--products {
-    display: flex;
-    width: 60%;
     justify-content: center;
   }
 
@@ -79,6 +83,8 @@ export default {
     margin-bottom: 2em;
     padding: 1em;
     align-items: center;
+    width: 70em;
+    align-self: center;
 
     &--price:before {
       content: "$";
