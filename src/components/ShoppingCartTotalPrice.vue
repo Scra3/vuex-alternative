@@ -17,7 +17,7 @@ export default {
   name: "ShoppingCartTotalPrice",
   props: {
     totalPrice: {
-      type: Object,
+      type: Number,
       required: true
     }
   }
