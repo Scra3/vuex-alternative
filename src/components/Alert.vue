@@ -16,7 +16,8 @@ export default {
   data() {
     return {
       isAlertVisible: false,
-      products: this.$shoppingCartState.state.products
+      products: this.$shoppingCartState.state.products,
+      idTimeout: null
     };
   },
   computed: {
@@ -27,7 +28,8 @@ export default {
   mounted() {
     EventBus.$on("NEW_PRODUCT_IN_SHOPPING_CART", () => {
       this.isAlertVisible = true;
-      setTimeout(() => (this.isAlertVisible = false), 1500);
+      this.idTimeout && clearTimeout(this.idTimeout);
+      this.idTimeout = setTimeout(() => (this.isAlertVisible = false), 1500);
     });
   }
 };
