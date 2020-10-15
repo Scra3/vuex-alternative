@@ -22,20 +22,25 @@
 <script>
 import Product from "./Product";
 import Alert from "@/components/Alert";
+import { productsState, productsMutators } from "@/repositories/products";
+
+/* ----------------------- */
+/* Example without plugins */
+/* ----------------------- */
 
 export default {
   name: "Products",
   components: { Product, Alert },
   data() {
     return {
-      products: this.$productsState.state.all,
+      products: productsState.state.all,
       isLoading: true
     };
   },
   async mounted() {
     try {
       this.isLoading = true;
-      await this.$productsMutators.fetchProducts();
+      await productsMutators.fetchProducts();
     } finally {
       this.isLoading = false;
     }
