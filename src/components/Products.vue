@@ -1,21 +1,29 @@
 <template>
   <div>
-    <template v-if="isLoading">
-      <v-skeleton-loader type="card"></v-skeleton-loader>
-      <v-skeleton-loader type="card"></v-skeleton-loader>
-      <v-skeleton-loader type="card"></v-skeleton-loader>
-    </template>
-    <template v-else>
-      <Alert />
-      <div class="products">
-        <Product
+    <Alert />
+    <div class="products">
+      <template v-if="isLoading">
+        <v-skeleton-loader
           class="products--product"
-          :product="product"
-          v-for="product in products"
-          :key="`p-${product.id}`"
-        />
-      </div>
-    </template>
+          type="card"
+        ></v-skeleton-loader>
+        <v-skeleton-loader
+          class="products--product"
+          type="card"
+        ></v-skeleton-loader>
+        <v-skeleton-loader
+          class="products--product"
+          type="card"
+        ></v-skeleton-loader>
+      </template>
+      <Product
+        v-else
+        class="products--product"
+        :product="product"
+        v-for="product in products"
+        :key="`p-${product.id}`"
+      />
+    </div>
   </div>
 </template>
 
