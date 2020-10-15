@@ -1,4 +1,4 @@
-import EventBus from "../event-bus";
+import EventBus from "@/event-bus";
 
 export const shoppingCartPlugin = {
   install: function(Vue) {
@@ -8,21 +8,21 @@ export const shoppingCartPlugin = {
 };
 
 export const shoppingCartState = {
-  products: []
+  state: {
+    products: []
+  }
 };
 
 export const shoppingCartMutators = {
   add: product => {
-    EventBus.$emit(
-      "NEW_PRODUCT_IN_SHOPPING_CART",
-      shoppingCartState.products.length
-    );
-    shoppingCartState.products.push(product);
+    EventBus.$emit("NEW_PRODUCT_IN_SHOPPING_CART");
+
+    shoppingCartState.state.products.push(product);
   },
   remove: productToRemove => {
-    const index = shoppingCartState.products.findIndex(
+    const index = shoppingCartState.state.products.findIndex(
       product => product.id !== productToRemove.id
     );
-    shoppingCartState.products.splice(index, 1);
+    shoppingCartState.state.products.splice(index, 1);
   }
 };

@@ -1,24 +1,42 @@
 <template>
-  <v-alert v-show="isAlertVisible" dense text type="success" class="alert">
-    <span>
-      <strong>{{ product.name }}</strong>
-      is added in you shopping cart.
-    </span>
-  </v-alert>
+  <div class="alert">
+    <v-alert v-if="isAlertVisible" dense text type="success">
+      <span>
+        <strong>{{ lastProductAdded.name }}</strong>
+        is added in you shopping cart.
+      </span>
+    </v-alert>
+  </div>
 </template>
 <script>
+import EventBus from "@/event-bus";
+
 export default {
   name: "Alert",
   data() {
     return {
-      isAlertVisible: true
+      isAlertVisible: false,
+      products: this.$shoppingCartState.state.products
     };
   },
-  props: {
-    product: { type: Object, required: true }
+  computed: {
+    lastProductAdded() {
+      return this.products[this.products.length - 1];
+    }
+  },
+  mounted() {
+    const self = this;
+    EventBus.$on("NEW_PRODUCT_IN_SHOPPING_CART", () => {
+      self.isAlertVisible = true;
+    });
   },
   created() {
     setTimeout(() => (this.isAlertVisible = false), 1500);
   }
 };
 </script>
+<style scoped lang="scss">
+.alert {
+  height: 3em;
+}
+</style>

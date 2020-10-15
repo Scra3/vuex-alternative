@@ -1,12 +1,19 @@
 <template>
   <v-app>
     <v-app-bar dark app>
-      <v-toolbar-title class="app--title" @click="$router.push('/')"
-        >My e-commerce</v-toolbar-title
+      <img
+        class="app--logo"
+        src="@/assets/logo.png"
+        @click="$router.push('/')"
+      />
+
+      <v-toolbar-title @click="$router.push('/')" class="app--title">
+        My e-commerce</v-toolbar-title
       >
+
       <v-spacer></v-spacer>
       <v-btn icon x-large @click="$router.push('/shoppingCart')">
-        {{ productsInShoppingCart.length }}
+        {{ shoppingCartState.products.length }}
         <v-icon>mdi-basket</v-icon>
       </v-btn>
     </v-app-bar>
@@ -24,15 +31,20 @@ export default {
   name: "App",
   data() {
     return {
-      productsInShoppingCart: this.$shoppingCartState.products
+      shoppingCartState: this.$shoppingCartState.state
     };
   }
 };
 </script>
 <style scoped lang="scss">
 .app {
-  &--title {
+  &--title,
+  &--logo {
     cursor: pointer;
+  }
+
+  &--logo {
+    height: 100%;
   }
 }
 </style>

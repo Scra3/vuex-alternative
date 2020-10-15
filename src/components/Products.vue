@@ -6,11 +6,7 @@
       <v-skeleton-loader type="card"></v-skeleton-loader>
     </template>
     <template v-else>
-      <Alert
-        :key="eventId"
-        v-if="eventId !== null"
-        :product="productsInShoppingCart[productsInShoppingCart.length - 1]"
-      />
+      <Alert />
       <Product
         :product="product"
         v-for="product in products"
@@ -23,25 +19,19 @@
 <script>
 import Product from "./Product";
 import Alert from "@/components/Alert";
-import EventBus from "../event-bus";
 
 export default {
   name: "Products",
   components: { Product, Alert },
   data() {
     return {
-      products: this.$productsState.all,
+      products: this.$productsState.state.all,
       isLoading: true,
-      productsInShoppingCart: this.$shoppingCartState.products,
-      eventId: null
+      shoppingCartState: this.$shoppingCartState.state,
+      productsInShoppingCart: this.$shoppingCartState.state.products
     };
   },
   async mounted() {
-    const self = this;
-    EventBus.$on("NEW_PRODUCT_IN_SHOPPING_CART", eventId => {
-      self.eventId = eventId;
-    });
-
     try {
       this.isLoading = true;
       await this.$productsMutators.fetchProducts();

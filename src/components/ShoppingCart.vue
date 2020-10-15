@@ -2,19 +2,20 @@
   <div class="shopping-cart">
     <h1>Your shopping cart</h1>
     <span
-      v-if="productsInShoppingCart.length === 0"
+      v-if="products.length === 0"
       class="shopping-cart--information-message"
     >
       There are no products
     </span>
-    <template v-else>
+    <template v-else class="shopping-cart--products">
       <v-card
         elevation="2"
         class="shopping-cart--product"
         :product="product"
-        v-for="(product, index) in productsInShoppingCart"
+        v-for="(product, index) in products"
         :key="index"
       >
+        <img class="shopping-cart--product--picture" :src="product.picture" />
         <h3>{{ product.name }}</h3>
         <span class="shopping-cart--product--price">{{ product.price }}</span>
         <v-btn color="error" @click="remove(product)">
@@ -39,12 +40,12 @@ export default {
   name: "ShoppingCart",
   data() {
     return {
-      productsInShoppingCart: this.$shoppingCartState.products
+      products: this.$shoppingCartState.state.products
     };
   },
   computed: {
     totalPrice() {
-      return this.productsInShoppingCart.reduce((total, product) => {
+      return this.products.reduce((total, product) => {
         return total + product.price;
       }, 0);
     }
@@ -59,10 +60,19 @@ export default {
 
 <style scoped lang="scss">
 .shopping-cart {
+  width: 100%;
+
   &--information-message {
     display: flex;
     justify-content: center;
   }
+
+  &--products {
+    display: flex;
+    width: 60%;
+    justify-content: center;
+  }
+
   &--product {
     display: flex;
     justify-content: space-between;
@@ -72,6 +82,10 @@ export default {
 
     &--price:before {
       content: "$";
+    }
+
+    &--picture {
+      width: 10em;
     }
   }
 
