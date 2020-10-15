@@ -8,18 +8,8 @@
       There are no products
     </span>
     <template v-else>
-      <section class="shopping-cart--total">
-        <h2>
-          Total:
-          <span class="shopping-cart--total--price">{{ totalPrice }}</span>
-        </h2>
-        <v-btn color="success">
-          Place order
-          <v-icon right>
-            mdi-credit-card-outline
-          </v-icon>
-        </v-btn>
-      </section>
+      <ShoppingCartTotalPrice :total-price="totalPrice" />
+
       <div class="shopping-cart--products">
         <h2 class="shopping-cart--products--count">
           Product(s): {{ products.length }}
@@ -48,18 +38,7 @@
         </v-card>
       </div>
 
-      <section class="shopping-cart--total">
-        <h2>
-          Total:
-          <span class="shopping-cart--total--price">{{ totalPrice }}</span>
-        </h2>
-        <v-btn color="success">
-          Place order
-          <v-icon right>
-            mdi-credit-card-outline
-          </v-icon>
-        </v-btn>
-      </section>
+      <ShoppingCartTotalPrice :total-price="totalPrice" />
     </template>
   </div>
 </template>
@@ -69,8 +48,11 @@
 /* Example with plugins */
 /* ----------------------- */
 
+import ShoppingCartTotalPrice from "./ShoppingCartTotalPrice";
+
 export default {
   name: "ShoppingCart",
+  components: { ShoppingCartTotalPrice },
   data() {
     return {
       products: this.$shoppingCartState.state.products
@@ -125,14 +107,6 @@ export default {
       &--picture {
         width: 10em;
       }
-    }
-  }
-
-  &--total {
-    text-align: right;
-    align-self: flex-end;
-    &--price:before {
-      content: "$";
     }
   }
 }
