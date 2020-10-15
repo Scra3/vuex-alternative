@@ -29,9 +29,7 @@ export default {
   data() {
     return {
       products: this.$productsState.state.all,
-      isLoading: true,
-      shoppingCartState: this.$shoppingCartState.state,
-      productsInShoppingCart: this.$shoppingCartState.state.products
+      isLoading: true
     };
   },
   async mounted() {

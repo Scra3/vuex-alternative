@@ -13,7 +13,7 @@
 
       <v-spacer></v-spacer>
       <v-btn icon x-large @click="$router.push('/shoppingCart')">
-        {{ shoppingCartState.products.length }}
+        {{ productsInShoppingCart.length }}
         <v-icon>mdi-basket</v-icon>
       </v-btn>
     </v-app-bar>
@@ -31,7 +31,7 @@ export default {
   name: "App",
   data() {
     return {
-      shoppingCartState: this.$shoppingCartState.state
+      productsInShoppingCart: this.$shoppingCartState.state.products
     };
   }
 };

@@ -1,6 +1,6 @@
 <template>
   <div class="alert">
-    <v-alert v-show="isAlertVisible" dense text type="success">
+    <v-alert v-if="isAlertVisible" dense text type="success">
       <span>
         <strong>{{ lastProductAdded.name }}</strong>
         is added in you shopping cart.
@@ -34,6 +34,6 @@ export default {
 </script>
 <style scoped lang="scss">
 .alert {
-  height: 3em;
+  min-height: 3em;
 }
 </style>
