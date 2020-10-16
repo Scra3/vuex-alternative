@@ -6,7 +6,6 @@ export default {
     products: []
   },
   add(product) {
-    // (i) On doit pouvoir gérer ça a la main facilement sans lib externe a mon avis
     EventBus.$emit(NEW_PRODUCT_IN_SHOPPING_CART_EVENT);
 
     this.state.products.push(product);
