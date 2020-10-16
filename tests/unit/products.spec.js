@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Products from "@/components/Products.vue";
-import { productsMutators } from "@/repositories/products";
+import ProductsRepository from "@/repositories/products";
 import Vuetify from "vuetify";
 import Vue from "vue";
 import { cyclade, dominion } from "@/data/products";
@@ -16,9 +16,9 @@ describe("Products.vue", () => {
   let wrapper;
 
   beforeEach(() => {
-    productsMutators.fetchProducts = jest.fn(() => {
-      productsMutators.add(cyclade);
-      productsMutators.add(dominion);
+    ProductsRepository.fetchProducts = jest.fn(() => {
+      ProductsRepository.add(cyclade);
+      ProductsRepository.add(dominion);
     });
 
     wrapper = shallowMount(Products, { localVue, vuetify: new Vuetify() });
