@@ -10,6 +10,7 @@
 </template>
 <script>
 import EventBus from "@/event-bus";
+import { NEW_PRODUCT_IN_SHOPPING_CART_EVENT } from "@/constants";
 
 export default {
   name: "Alert",
@@ -26,7 +27,7 @@ export default {
     }
   },
   mounted() {
-    EventBus.$on("NEW_PRODUCT_IN_SHOPPING_CART", () => {
+    EventBus.$on(NEW_PRODUCT_IN_SHOPPING_CART_EVENT, () => {
       this.isAlertVisible = true;
       this.idTimeout && clearTimeout(this.idTimeout);
       this.idTimeout = setTimeout(() => (this.isAlertVisible = false), 1500);
