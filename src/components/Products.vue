@@ -21,7 +21,7 @@
         class="products--product"
         :product="product"
         v-for="product in products"
-        :key="`p-${product.id}`"
+        :key="product.id"
       />
     </div>
   </div>
