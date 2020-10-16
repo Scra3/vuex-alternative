@@ -32,7 +32,7 @@ export default {
   name: "App",
   data() {
     return {
-      productsInShoppingCart: this.$shoppingCartState.state.products
+      productsInShoppingCart: this.$shoppingCart.state.products
     };
   }
 };
