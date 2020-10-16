@@ -1,5 +1,8 @@
-import { sleep } from "@/helpers";
 import { products as fakeProducts } from "@/data/products";
+
+const sleep = time => {
+  return new Promise(resolve => setTimeout(resolve, time));
+};
 
 export default {
   state: {
