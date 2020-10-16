@@ -12,7 +12,7 @@
 
       <div class="shopping-cart--products">
         <h2 class="shopping-cart--products--count">
-          Product(s): {{ products.length }}
+          {{ products.length }} Product(s)
         </h2>
         <v-card
           elevation="2"
@@ -90,7 +90,7 @@ export default {
     width: 70em;
 
     &--count {
-      align-self: flex-end;
+      align-self: flex-start;
     }
 
     &--product {
