@@ -8,6 +8,7 @@
     </v-alert>
   </div>
 </template>
+
 <script>
 import EventBus from "@/event-bus";
 import { NEW_PRODUCT_IN_SHOPPING_CART_EVENT } from "@/constants";
@@ -17,7 +18,7 @@ export default {
   data() {
     return {
       isAlertVisible: false,
-      products: this.$shoppingCartState.state.products,
+      products: this.$shoppingCart.state.products,
       idTimeout: null
     };
   },
@@ -35,8 +36,9 @@ export default {
   }
 };
 </script>
+
 <style scoped lang="scss">
 .alert {
-  height: 3em;  
+  height: 3em;
 }
 </style>

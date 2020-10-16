@@ -1,19 +1,19 @@
 import { sleep } from "@/helpers";
-import { products } from "@/data/products";
+import { products as fakeProducts } from "@/data/products";
 
-export const productsState = {
-  state: {
+// TODO On doit pouvoir virer cette const, mais je ne sais pas faire une sorte de this.state dans Products.add() par exemple.
+const state = {
     all: []
-  }
 };
 
-export const productsMutators = {
-  add: product => {
-    productsState.state.all.push(product);
+export default {
+  state:state,
+  add(product) {
+    state.all.push(product);
   },
   async fetchProducts() {
     await sleep(1000);
-    productsState.state.all.splice(0, productsState.state.all.length);
-    products.forEach(product => this.add(product));
+    state.all.splice(0, state.all.length);
+    fakeProducts.forEach(product => this.add(product));
   }
 };

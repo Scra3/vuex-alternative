@@ -12,6 +12,7 @@
     </v-btn>
   </v-card>
 </template>
+
 <script>
 export default {
   name: "Product",
@@ -23,11 +24,12 @@ export default {
   },
   methods: {
     add() {
-      this.$shoppingCartMutators.add(this.product);
+      this.$shoppingCart.add(this.product);
     }
   }
 };
 </script>
+
 <style scoped lang="scss">
 .product {
   display: flex;

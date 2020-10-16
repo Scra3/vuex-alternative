@@ -55,7 +55,7 @@ export default {
   components: { ShoppingCartTotalPrice },
   data() {
     return {
-      products: this.$shoppingCartState.state.products
+      products: this.$shoppingCart.state.products
     };
   },
   computed: {
@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     remove(product) {
-      this.$shoppingCartMutators.remove(product);
+      this.$shoppingCart.remove(product);
     }
   }
 };

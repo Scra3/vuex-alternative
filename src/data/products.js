@@ -1,3 +1,4 @@
+// TODO I think we can move this in products repository to avoid any confusion with 'data' word
 export const cyclade = {
   id: 1,
   description:

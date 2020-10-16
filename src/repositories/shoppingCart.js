@@ -1,29 +1,29 @@
 import EventBus from "@/event-bus";
 import { NEW_PRODUCT_IN_SHOPPING_CART_EVENT } from "@/constants";
 
+// TODO: move this in main (to prevent any constraint on how it is used) ?
 export const shoppingCartPlugin = {
   install: function(Vue) {
-    Vue.prototype.$shoppingCartState = shoppingCartState;
-    Vue.prototype.$shoppingCartMutators = shoppingCartMutators;
+    Vue.prototype.$shoppingCart = shoppingCart;
   }
 };
 
-export const shoppingCartState = {
-  state: {
+export const state = {
     products: []
-  }
 };
 
-export const shoppingCartMutators = {
-  add: product => {
+export const shoppingCart = {
+  state: state,
+  add(product) {
+    // (i) On doit pouvoir gérer ça a la main facilement sans lib externe a mon avis
     EventBus.$emit(NEW_PRODUCT_IN_SHOPPING_CART_EVENT);
 
-    shoppingCartState.state.products.push(product);
+    state.products.push(product);
   },
-  remove: productToRemove => {
-    const index = shoppingCartState.state.products.findIndex(
+  remove(productToRemove) {
+    const index = state.products.findIndex(
       product => product.id !== productToRemove.id
     );
-    shoppingCartState.state.products.splice(index, 1);
+    state.products.splice(index, 1);
   }
 };

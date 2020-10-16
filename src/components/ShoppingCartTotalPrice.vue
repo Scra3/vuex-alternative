@@ -12,6 +12,7 @@
     </v-btn>
   </section>
 </template>
+
 <script>
 export default {
   name: "ShoppingCartTotalPrice",
