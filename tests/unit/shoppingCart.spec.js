@@ -20,7 +20,7 @@ describe("ShoppingCart.vue", () => {
     wrapper = shallowMount(ShoppingCart, { localVue, vuetify: new Vuetify() });
   });
 
-  it("displays all added products", async () => {
+  it("displays all the added products", async () => {
     wrapper.vm.$shoppingCartMutators.add(dominion);
     wrapper.vm.$shoppingCartMutators.add(smallWorld);
     await wrapper.vm.$nextTick();

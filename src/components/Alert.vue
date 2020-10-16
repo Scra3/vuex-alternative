@@ -2,7 +2,7 @@
   <div class="alert">
     <v-alert v-if="isAlertVisible" dense text type="success">
       <span>
-        <strong>{{ lastProductAdded.name }}</strong>
+        <strong>{{ lastAddedProduct.name }}</strong>
         is added in you shopping cart.
       </span>
     </v-alert>
@@ -22,7 +22,7 @@ export default {
     };
   },
   computed: {
-    lastProductAdded() {
+    lastAddedProduct() {
       return this.products[this.products.length - 1];
     }
   },
@@ -37,6 +37,6 @@ export default {
 </script>
 <style scoped lang="scss">
 .alert {
-  height: 3em;
+  height: 3em;  
 }
 </style>

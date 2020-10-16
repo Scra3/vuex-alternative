@@ -43,6 +43,7 @@ export default {
   &--description {
     width: 30%;
   }
+
   &--price:before {
     content: "$";
   }
