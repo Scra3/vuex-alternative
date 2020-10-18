@@ -1,4 +1,3 @@
-// TODO A mettre dans components, non ?
 <template>
   <v-app>
     <v-app-bar dark app>
