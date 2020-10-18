@@ -11,9 +11,7 @@
       <ShoppingCartTotalPrice :total-price="totalPrice" />
 
       <div class="shopping-cart--products">
-        <h2 class="shopping-cart--products--count">
-          {{ products.length }} Product(s)
-        </h2>
+        <h2>{{ products.length }} Product(s)</h2>
         <v-card
           elevation="2"
           class="shopping-cart--products--product"
@@ -24,6 +22,7 @@
           <img
             class="shopping-cart--products--product--picture"
             :src="product.picture"
+            :alt="product.name"
           />
           <h3>{{ product.name }}</h3>
           <span class="shopping-cart--products--product--price">{{
@@ -88,10 +87,6 @@ export default {
     display: flex;
     flex-direction: column;
     width: 70em;
-
-    &--count {
-      align-self: flex-start;
-    }
 
     &--product {
       display: flex;
