@@ -44,6 +44,7 @@ export default {
 
   &--description {
     width: 30%;
+    text-align: justify;
   }
 
   &--price:before {
