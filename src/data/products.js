@@ -12,7 +12,7 @@ export const smallWorld = {
   description:
     "Dans Small World, les joueurs luttent pour conquérir les régions d'un monde où il n'y a pas de place pour tous ! Conçu par Philippe Keyaerts dans la droite ligne du jeu Vinci™, primé à plusieurs reprises, Small World plongera les joueurs dans un monde habité par des nains, des mages, des amazones, des géants, des orcs et même des humains.",
   price: 17.5,
-  name: "Smallworld",
+  name: "Small World",
   picture: require("@/assets/game_2.jpg")
 };
 
