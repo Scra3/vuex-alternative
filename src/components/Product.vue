@@ -1,15 +1,23 @@
 <template>
   <v-card elevation="2" class="product">
-    <img class="product--picture" :src="product.picture" />
-    <h3>{{ product.name }}</h3>
-    <span class="product--description">{{ product.description }}</span>
-    <span class="product--price">{{ product.price }}</span>
-    <v-btn color="primary" @click="add()">
-      Add
-      <v-icon right>
-        mdi-plus
-      </v-icon>
-    </v-btn>
+    <h2>{{ product.name }}</h2>
+    <div class="product--content">
+      <img
+        class="product--content--picture"
+        :src="product.picture"
+        :alt="product.name"
+      />
+      <span class="product--content--description">
+        {{ product.description }}
+      </span>
+      <span class="product--content--price">{{ product.price }}</span>
+      <v-btn color="primary" @click="add()">
+        Add
+        <v-icon right>
+          mdi-plus
+        </v-icon>
+      </v-btn>
+    </div>
   </v-card>
 </template>
 
@@ -33,22 +41,27 @@ export default {
 <style scoped lang="scss">
 .product {
   display: flex;
-  justify-content: space-between;
   margin-bottom: 2em;
   padding: 1em;
-  align-items: center;
+  flex-direction: column;
 
-  &--picture {
-    width: 10em;
-  }
+  &--content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  &--description {
-    width: 30%;
-    text-align: justify;
-  }
+    &--picture {
+      width: 10em;
+    }
 
-  &--price:before {
-    content: "$";
+    &--description {
+      width: 30em;
+      text-align: justify;
+    }
+
+    &--price:before {
+      content: "$";
+    }
   }
 }
 </style>
