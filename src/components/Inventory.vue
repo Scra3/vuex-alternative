@@ -26,16 +26,12 @@ import Product from "./Product";
 import Alert from "@/components/Alert";
 import Inventory from "@/repositories/inventory";
 
-/* ----------------------- */
-/* Example without plugins */
-/* ----------------------- */
-
 export default {
   name: "Inventory",
   components: { Product, Alert },
   data() {
     return {
-      inventory: Inventory.state,
+      inventory: this.$store.state.inventory.all,
       isLoading: true
     };
   },
@@ -47,7 +43,7 @@ export default {
   async mounted() {
     try {
       this.isLoading = true;
-      await Inventory.fetchProducts();
+      await this.$store.dispatch("inventory/fetchProducts");
     } finally {
       this.isLoading = false;
     }

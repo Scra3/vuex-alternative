@@ -2,7 +2,7 @@
   <div class="shopping-cart">
     <h1>Your shopping cart</h1>
     <span
-      v-if="shoppingCart.products.length === 0"
+      v-if="products.length === 0"
       class="shopping-cart--information-message"
     >
       There is no product
@@ -11,12 +11,12 @@
       <ShoppingCartTotalPrice :total-price="totalPrice" />
 
       <div class="shopping-cart--products">
-        <h2>{{ shoppingCart.products.length }} Product(s)</h2>
+        <h2>{{ products.length }} Product(s)</h2>
         <v-card
           elevation="2"
           class="shopping-cart--products--product"
           :product="product"
-          v-for="(product, index) in shoppingCart.products"
+          v-for="(product, index) in products"
           :key="index"
         >
           <img
@@ -43,18 +43,15 @@
 </template>
 
 <script>
-/* ----------------------- */
-/* Example with plugins */
-/* ----------------------- */
-
 import ShoppingCartTotalPrice from "./ShoppingCartTotalPrice";
+import { mapMutations } from "vuex";
 
 export default {
   name: "ShoppingCart",
   components: { ShoppingCartTotalPrice },
   data() {
     return {
-      shoppingCart: this.$shoppingCart.state
+      products: this.$store.state.shoppingCart.products
     };
   },
   computed: {
@@ -63,9 +60,9 @@ export default {
     }
   },
   methods: {
-    remove(product) {
-      this.$shoppingCart.remove(product);
-    }
+    ...mapMutations({
+      remove: "shoppingCart/remove"
+    })
   }
 };
 </script>

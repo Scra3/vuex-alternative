@@ -1,16 +1,16 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
-import Inventory from "@/components/Inventory.vue";
+import Products from "@/components/Products.vue";
 import Vuetify from "vuetify";
 import Vue from "vue";
-import { cyclade, dominion } from "@/data/inventory";
+import { cyclade, dominion } from "@/data/products";
 import Vuex from "vuex";
-import inventoryModule from "@/store/inventory";
+import productsModule from "@/store/products";
 
 const localVue = createLocalVue();
 Vue.use(Vuetify);
 localVue.use(Vuex);
 
-describe("Inventory.vue", () => {
+describe("Products.vue", () => {
   let wrapper;
   let actions;
   let store;
@@ -28,14 +28,14 @@ describe("Inventory.vue", () => {
     store = new Vuex.Store({
       modules: {
         products: {
-          ...inventoryModule,
+          ...productsModule,
           state,
           actions
         }
       }
     });
 
-    wrapper = shallowMount(Inventory, {
+    wrapper = shallowMount(Products, {
       store,
       localVue,
       vuetify: new Vuetify()
