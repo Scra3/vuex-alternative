@@ -5,7 +5,7 @@
       v-if="products.length === 0"
       class="shopping-cart--information-message"
     >
-      There are no products
+      There is no product
     </span>
     <template v-else>
       <ShoppingCartTotalPrice :total-price="totalPrice" />
