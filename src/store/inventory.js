@@ -1,4 +1,4 @@
-import { products as fakeProducts } from "@/data/products";
+import api from "@/api";
 
 export default {
   namespaced: true,
@@ -12,13 +12,9 @@ export default {
   },
   actions: {
     async fetchProducts({ commit, state }) {
-      await sleep(1000);
+      const products = await api.fetchProducts();
       state.all.splice(0, state.all.length);
-      fakeProducts.forEach(product => commit("add", product));
+      products.forEach(product => commit("add", product));
     }
   }
-};
-
-const sleep = time => {
-  return new Promise(resolve => setTimeout(resolve, time));
 };
