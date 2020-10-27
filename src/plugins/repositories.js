@@ -1,6 +1,7 @@
-import Vue from "vue";
-import { shoppingCartPlugin } from "@/repositories/shoppingCart";
+import shoppingCart from "@/repositories/shoppingCart";
 
-export default () => {
-  Vue.use(shoppingCartPlugin);
+export const ShoppingCart = {
+  install: function(Vue) {
+    Vue.prototype.$shoppingCart = shoppingCart;
+  }
 };

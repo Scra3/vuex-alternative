@@ -3,11 +3,12 @@
     <v-alert v-if="isAlertVisible" dense text type="success">
       <span>
         <strong>{{ lastAddedProduct.name }}</strong>
-        is added in you shopping cart.
+        is added in your shopping cart.
       </span>
     </v-alert>
   </div>
 </template>
+
 <script>
 import EventBus from "@/event-bus";
 import { NEW_PRODUCT_IN_SHOPPING_CART_EVENT } from "@/constants";
@@ -17,7 +18,7 @@ export default {
   data() {
     return {
       isAlertVisible: false,
-      products: this.$shoppingCartState.state.products,
+      products: this.$shoppingCart.state.products,
       idTimeout: null
     };
   },
@@ -30,13 +31,14 @@ export default {
     EventBus.$on(NEW_PRODUCT_IN_SHOPPING_CART_EVENT, () => {
       this.isAlertVisible = true;
       this.idTimeout && clearTimeout(this.idTimeout);
-      this.idTimeout = setTimeout(() => (this.isAlertVisible = false), 1500);
+      this.idTimeout = setTimeout(() => (this.isAlertVisible = false), 2000);
     });
   }
 };
 </script>
+
 <style scoped lang="scss">
 .alert {
-  height: 3em;  
+  height: 3em;
 }
 </style>

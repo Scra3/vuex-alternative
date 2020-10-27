@@ -21,7 +21,7 @@
         class="products--product"
         :product="product"
         v-for="product in products"
-        :key="`p-${product.id}`"
+        :key="product.id"
       />
     </div>
   </div>
@@ -30,7 +30,7 @@
 <script>
 import Product from "./Product";
 import Alert from "@/components/Alert";
-import { productsState, productsMutators } from "@/repositories/products";
+import Products from "@/repositories/products";
 
 /* ----------------------- */
 /* Example without plugins */
@@ -41,14 +41,14 @@ export default {
   components: { Product, Alert },
   data() {
     return {
-      products: productsState.state.all,
+      products: Products.state.all,
       isLoading: true
     };
   },
   async mounted() {
     try {
       this.isLoading = true;
-      await productsMutators.fetchProducts();
+      await Products.fetchProducts();
     } finally {
       this.isLoading = false;
     }

@@ -5,15 +5,13 @@
       v-if="products.length === 0"
       class="shopping-cart--information-message"
     >
-      There are no products
+      There is no product
     </span>
     <template v-else>
       <ShoppingCartTotalPrice :total-price="totalPrice" />
 
       <div class="shopping-cart--products">
-        <h2 class="shopping-cart--products--count">
-          Product(s): {{ products.length }}
-        </h2>
+        <h2>{{ products.length }} Product(s)</h2>
         <v-card
           elevation="2"
           class="shopping-cart--products--product"
@@ -24,6 +22,7 @@
           <img
             class="shopping-cart--products--product--picture"
             :src="product.picture"
+            :alt="product.name"
           />
           <h3>{{ product.name }}</h3>
           <span class="shopping-cart--products--product--price">{{
@@ -55,7 +54,7 @@ export default {
   components: { ShoppingCartTotalPrice },
   data() {
     return {
-      products: this.$shoppingCartState.state.products
+      products: this.$shoppingCart.state.products
     };
   },
   computed: {
@@ -67,7 +66,7 @@ export default {
   },
   methods: {
     remove(product) {
-      this.$shoppingCartMutators.remove(product);
+      this.$shoppingCart.remove(product);
     }
   }
 };
@@ -88,10 +87,6 @@ export default {
     display: flex;
     flex-direction: column;
     width: 70em;
-
-    &--count {
-      align-self: flex-end;
-    }
 
     &--product {
       display: flex;

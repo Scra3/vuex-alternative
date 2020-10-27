@@ -1,19 +1,15 @@
-import { sleep } from "@/helpers";
-import { products } from "@/data/products";
+import api from "@/api";
 
-export const productsState = {
+export default {
   state: {
     all: []
-  }
-};
-
-export const productsMutators = {
-  add: product => {
-    productsState.state.all.push(product);
+  },
+  add(product) {
+    this.state.all.push(product);
   },
   async fetchProducts() {
-    await sleep(1000);
-    productsState.state.all.splice(0, productsState.state.all.length);
+    const products = await api.fetchProducts();
+    this.state.all.splice(0, this.state.all.length);
     products.forEach(product => this.add(product));
   }
 };
