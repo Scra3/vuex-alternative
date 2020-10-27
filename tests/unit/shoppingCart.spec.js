@@ -21,8 +21,8 @@ describe("ShoppingCart.vue", () => {
   });
 
   it("displays all the added products", async () => {
-    wrapper.vm.$shoppingCart.add(dominion);
-    wrapper.vm.$shoppingCart.add(smallWorld);
+    wrapper.vm.$shoppingCart.state.products.push(dominion);
+    wrapper.vm.$shoppingCart.state.products.push(smallWorld);
     await wrapper.vm.$nextTick();
 
     expect(wrapper.text()).toContain(dominion.name);

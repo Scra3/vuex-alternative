@@ -1,8 +1,4 @@
-import { products as fakeProducts } from "@/data/products";
-
-const sleep = time => {
-  return new Promise(resolve => setTimeout(resolve, time));
-};
+import api from "@/api";
 
 export default {
   state: {
@@ -12,8 +8,8 @@ export default {
     this.state.all.push(product);
   },
   async fetchProducts() {
-    await sleep(1000);
+    const products = await api.fetchProducts();
     this.state.all.splice(0, this.state.all.length);
-    fakeProducts.forEach(product => this.add(product));
+    products.forEach(product => this.add(product));
   }
 };
