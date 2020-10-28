@@ -2,7 +2,7 @@
   <div class="shopping-cart">
     <h1>Your shopping cart</h1>
     <span
-      v-if="products.length === 0"
+      v-if="shoppingCart.products.length === 0"
       class="shopping-cart--information-message"
     >
       There is no product
@@ -11,12 +11,12 @@
       <ShoppingCartTotalPrice :total-price="totalPrice" />
 
       <div class="shopping-cart--products">
-        <h2>{{ products.length }} Product(s)</h2>
+        <h2>{{ shoppingCart.products.length }} Product(s)</h2>
         <v-card
           elevation="2"
           class="shopping-cart--products--product"
           :product="product"
-          v-for="(product, index) in products"
+          v-for="(product, index) in shoppingCart.products"
           :key="index"
         >
           <img
@@ -54,14 +54,12 @@ export default {
   components: { ShoppingCartTotalPrice },
   data() {
     return {
-      products: this.$shoppingCart.state.products
+      shoppingCart: this.$shoppingCart.state
     };
   },
   computed: {
     totalPrice() {
-      return this.products.reduce((total, product) => {
-        return total + product.price;
-      }, 0);
+      return this.$shoppingCart.getTotalPrice();
     }
   },
   methods: {
