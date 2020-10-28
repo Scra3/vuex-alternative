@@ -4,14 +4,8 @@
     <div class="inventory">
       <template v-if="isLoading">
         <v-skeleton-loader
-          class="inventory--product"
-          type="card"
-        ></v-skeleton-loader>
-        <v-skeleton-loader
-          class="inventory--product"
-          type="card"
-        ></v-skeleton-loader>
-        <v-skeleton-loader
+          v-for="index in 3"
+          :key="index"
           class="inventory--product"
           type="card"
         ></v-skeleton-loader>
