@@ -11,7 +11,7 @@ export default {
   },
   async fetchProducts() {
     const newProducts = await api.fetchProducts();
-    state.products.splice(0, state.products.length);
+    state.products = [];
     newProducts.forEach(product => this.add(product));
   },
   getProductsCount() {
