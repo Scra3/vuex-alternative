@@ -24,4 +24,4 @@ export const dominion = {
   picture: require("@/assets/game_1.jpg")
 };
 
-export const products = [cyclade, smallWorld, dominion];
+export const inventory = [cyclade, smallWorld, dominion];

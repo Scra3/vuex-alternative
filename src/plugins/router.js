@@ -1,9 +1,9 @@
 import VueRouter from "vue-router";
-import Products from "@/components/Products";
+import Inventory from "@/components/Inventory";
 import ShoppingCart from "@/components/ShoppingCart";
 
 const routes = [
-  { path: "/", component: Products },
+  { path: "/", component: Inventory },
   { path: "/shoppingCart", component: ShoppingCart }
 ];
 
