@@ -14,7 +14,7 @@
         v-else
         class="inventory--product"
         :product="product"
-        v-for="product in products"
+        v-for="product in inventory.products"
         :key="product.id"
       />
     </div>
@@ -35,7 +35,7 @@ export default {
   components: { Product, Alert },
   data() {
     return {
-      products: Inventory.state.products,
+      inventory: Inventory.state,
       isLoading: true
     };
   },
