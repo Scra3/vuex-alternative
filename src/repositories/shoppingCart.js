@@ -15,5 +15,10 @@ export default {
       product => product.id === productToRemove.id
     );
     this.state.products.splice(index, 1);
+  },
+  getTotalPrice() {
+    return this.state.products.reduce((total, product) => {
+      return total + product.price;
+    }, 0);
   }
 };
