@@ -1,9 +1,9 @@
-export const cyclade = {
+export const cyclades = {
   id: 1,
   description:
     "Cyclades est un jeu pour 2 à 5 joueurs. Chaque joueur est le chef d'une cité-état de la Grèce antique et doit s'assurer que sa cité aura la prédominance dans les cyclades. Le but du jeu est d'être le premier qui possèdera deux métropoles.",
   price: 32,
-  name: "Cyclade",
+  name: "Cyclades",
   picture: require("@/assets/cyclades.png")
 };
 export const smallWorld = {
@@ -24,4 +24,4 @@ export const dominion = {
   picture: require("@/assets/dominion.jpg")
 };
 
-export const inventory = [cyclade, smallWorld, dominion];
+export const inventory = [cyclades, smallWorld, dominion];
