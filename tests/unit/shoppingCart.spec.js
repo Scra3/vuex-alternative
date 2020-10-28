@@ -3,7 +3,7 @@ import ShoppingCart from "@/components/ShoppingCart.vue";
 import { ShoppingCart as ShoppingCartPlugin } from "@/plugins/repositories";
 import Vuetify from "vuetify";
 import Vue from "vue";
-import { dominion, smallWorld } from "@/data/products";
+import { dominion, smallWorld } from "@/data/inventory";
 
 const localVue = createLocalVue();
 Vue.use(Vuetify);

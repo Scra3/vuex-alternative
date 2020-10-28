@@ -1,8 +1,8 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
-import Products from "@/components/Products.vue";
+import Inventory from "@/components/Inventory.vue";
 import Vuetify from "vuetify";
 import Vue from "vue";
-import { products } from "@/data/products";
+import { inventory } from "@/data/inventory";
 import api from "@/api";
 
 const localVue = createLocalVue();
@@ -12,16 +12,16 @@ Vue.use(Vuetify);
 /* Example without plugins */
 /* ----------------------- */
 
-describe("Products.vue", () => {
+describe("Inventory.vue", () => {
   let wrapper;
 
   beforeEach(() => {
-    api.fetchProducts = jest.fn().mockReturnValue(products);
+    api.fetchProducts = jest.fn().mockReturnValue(inventory);
 
-    wrapper = shallowMount(Products, { localVue, vuetify: new Vuetify() });
+    wrapper = shallowMount(Inventory, { localVue, vuetify: new Vuetify() });
   });
 
   it("displays all the fetched products", () => {
-    expect(wrapper.findAll("Product-stub").length).toEqual(products.length);
+    expect(wrapper.findAll("Product-stub").length).toEqual(inventory.length);
   });
 });

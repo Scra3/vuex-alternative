@@ -1,8 +1,8 @@
-import { products } from "@/data/products";
+import { inventory } from "@/data/inventory";
 
 const fetchProducts = async () => {
   await sleep(1000);
-  return products;
+  return inventory;
 };
 
 const sleep = time => {
