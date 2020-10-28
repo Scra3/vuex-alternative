@@ -12,7 +12,7 @@ export default {
   },
   remove(productToRemove) {
     const index = this.state.products.findIndex(
-      product => product.id !== productToRemove.id
+      product => product.id === productToRemove.id
     );
     this.state.products.splice(index, 1);
   }
