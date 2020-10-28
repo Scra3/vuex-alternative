@@ -10,13 +10,15 @@
           type="card"
         ></v-skeleton-loader>
       </template>
-      <Product
-        v-else
-        class="inventory--product"
-        :product="product"
-        v-for="product in inventory.products"
-        :key="product.id"
-      />
+      <div v-else>
+        <h2>{{ productsCount }} Product(s) available for sale</h2>
+        <Product
+          class="inventory--product"
+          :product="product"
+          v-for="product in inventory.products"
+          :key="product.id"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -38,6 +40,9 @@ export default {
       inventory: Inventory.state,
       isLoading: true
     };
+  },
+  computed: {
+    productsCount: Inventory.getProductsCount
   },
   async mounted() {
     try {
