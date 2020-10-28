@@ -10,7 +10,7 @@
           type="card"
         ></v-skeleton-loader>
       </template>
-      <div v-else>
+      <template v-else>
         <h2>{{ productsCount }} Product(s) available for sale</h2>
         <Product
           class="inventory--product"
@@ -18,7 +18,7 @@
           v-for="product in inventory.products"
           :key="product.id"
         />
-      </div>
+      </template>
     </div>
   </div>
 </template>
