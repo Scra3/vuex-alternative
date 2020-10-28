@@ -62,7 +62,8 @@ export default {
   align-items: center;
 
   &--product {
-    width: 70em;
+    max-width: 70em;
+    width: 100%;
   }
 }
 </style>

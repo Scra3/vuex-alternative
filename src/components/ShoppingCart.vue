@@ -86,7 +86,9 @@ export default {
   &--products {
     display: flex;
     flex-direction: column;
-    width: 70em;
+    max-width: 70em;
+    width: 100%;
+    min-width: 30em;
 
     &--product {
       display: flex;
