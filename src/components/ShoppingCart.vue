@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     totalPrice() {
-      return this.$shoppingCart.getTotalPrice();
+      return this.$shoppingCart.totalPrice;
     }
   },
   methods: {

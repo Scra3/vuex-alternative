@@ -1,20 +1,18 @@
 import api from "@/api";
 
-const state = {
-  products: []
-};
-
 export default {
-  state,
+  state: {
+    products: []
+  },
   add(product) {
-    state.products.push(product);
+    this.state.products.push(product);
   },
   async fetchProducts() {
     const newProducts = await api.fetchProducts();
-    state.products = [];
+    this.state.products = [];
     newProducts.forEach(product => this.add(product));
   },
-  getProductsCount() {
-    return state.products.length;
+  get productsCount() {
+    return this.state.products.length;
   }
 };

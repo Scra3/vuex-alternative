@@ -42,7 +42,9 @@ export default {
     };
   },
   computed: {
-    productsCount: Inventory.getProductsCount
+    productsCount() {
+      return Inventory.productsCount;
+    }
   },
   async mounted() {
     try {
