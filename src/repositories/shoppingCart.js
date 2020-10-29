@@ -25,7 +25,7 @@ export default {
       product => product.shoppingCartId !== productToRemove.shoppingCartId
     );
   },
-  getTotalPrice() {
+  get totalPrice() {
     return this.state.products.reduce(
       (total, product) => total + product.price,
       0
