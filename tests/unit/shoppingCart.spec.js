@@ -20,12 +20,16 @@ describe("ShoppingCart.vue", () => {
     wrapper = shallowMount(ShoppingCart, { localVue, vuetify: new Vuetify() });
   });
 
-  it("displays all the added products", async () => {
-    wrapper.vm.$shoppingCart.state.products.push(dominion);
-    wrapper.vm.$shoppingCart.state.products.push(smallWorld);
-    await wrapper.vm.$nextTick();
+  describe("when 2 products in cart", () => {
+    beforeEach(async () => {
+      wrapper.vm.$shoppingCart.state.products.push(dominion);
+      wrapper.vm.$shoppingCart.state.products.push(smallWorld);
+      await wrapper.vm.$nextTick();
+    });
 
-    expect(wrapper.text()).toContain(dominion.name);
-    expect(wrapper.text()).toContain(smallWorld.name);
+    it("displays these 2 products", () => {
+      expect(wrapper.text()).toContain(dominion.name);
+      expect(wrapper.text()).toContain(smallWorld.name);
+    });
   });
 });
