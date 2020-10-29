@@ -44,7 +44,7 @@
 
 <script>
 import ShoppingCartTotalPrice from "./ShoppingCartTotalPrice";
-import { mapMutations } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "ShoppingCart",
@@ -55,9 +55,9 @@ export default {
     };
   },
   computed: {
-    totalPrice() {
-      return this.$shoppingCart.totalPrice;
-    }
+    ...mapGetters({
+      totalPrice: "shoppingCart/getTotalPrice"
+    })
   },
   methods: {
     ...mapMutations({

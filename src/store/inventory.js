@@ -3,18 +3,23 @@ import api from "@/api";
 export default {
   namespaced: true,
   state: () => ({
-    all: []
+    products: []
   }),
   mutations: {
     add(state, product) {
-      state.all.push(product);
+      state.products.push(product);
     }
   },
   actions: {
     async fetchProducts({ commit, state }) {
       const products = await api.fetchProducts();
-      state.all.splice(0, state.all.length);
+      state.products.splice(0, state.products.length);
       products.forEach(product => commit("add", product));
+    }
+  },
+  getters: {
+    getProductsCount(state) {
+      return state.products.length;
     }
   }
 };

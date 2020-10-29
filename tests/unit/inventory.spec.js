@@ -2,7 +2,7 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Inventory from "@/components/Inventory.vue";
 import Vuetify from "vuetify";
 import Vue from "vue";
-import { cyclade, dominion } from "@/data/inventory";
+import { cyclades, dominion } from "@/data/inventory";
 import Vuex from "vuex";
 import inventoryModule from "@/store/inventory";
 
@@ -22,12 +22,12 @@ describe("Inventory.vue", () => {
     };
 
     state = {
-      all: [cyclade, dominion]
+      products: [cyclades, dominion]
     };
 
     store = new Vuex.Store({
       modules: {
-        products: {
+        inventory: {
           ...inventoryModule,
           state,
           actions

@@ -13,7 +13,7 @@
         <h2>{{ productsCount }} Product(s) available for sale</h2>
         <Product
           :product="product"
-          v-for="product in inventory.products"
+          v-for="product in products"
           :key="product.id"
         />
       </div>
@@ -24,21 +24,21 @@
 <script>
 import Product from "./Product";
 import Alert from "@/components/Alert";
-import Inventory from "@/repositories/inventory";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Inventory",
   components: { Product, Alert },
   data() {
     return {
-      inventory: this.$store.state.inventory.all,
+      products: this.$store.state.inventory.products,
       isLoading: true
     };
   },
   computed: {
-    productsCount() {
-      return Inventory.productsCount;
-    }
+    ...mapGetters({
+      productsCount: "inventory/getProductsCount"
+    })
   },
   async mounted() {
     try {

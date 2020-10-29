@@ -14,9 +14,17 @@ export default {
     },
     remove(state, productToRemove) {
       const index = state.products.findIndex(
-        product => product.id !== productToRemove.id
+        product => product.id === productToRemove.id
       );
       state.products.splice(index, 1);
+    }
+  },
+  getters: {
+    getTotalPrice(state) {
+      return state.products.reduce(
+        (total, product) => total + product.price,
+        0
+      );
     }
   }
 };
