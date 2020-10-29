@@ -1,5 +1,6 @@
 import { createLocalVue, shallowMount } from "@vue/test-utils";
 import Inventory from "@/components/Inventory.vue";
+import Product from "@/components/Product";
 import Vuetify from "vuetify";
 import Vue from "vue";
 import { inventory } from "@/data/inventory";
@@ -22,6 +23,6 @@ describe("Inventory.vue", () => {
   });
 
   it("displays all the fetched products", () => {
-    expect(wrapper.findAll("Product-stub").length).toEqual(inventory.length);
+    expect(wrapper.findAllComponents(Product).length).toEqual(inventory.length);
   });
 });
