@@ -26,8 +26,9 @@ export default {
     );
   },
   getTotalPrice() {
-    return this.state.products.reduce((total, product) => {
-      return total + product.price;
-    }, 0);
+    return this.state.products.reduce(
+      (total, product) => total + product.price,
+      0
+    );
   }
 };
