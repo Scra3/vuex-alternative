@@ -2,23 +2,21 @@
   <div>
     <Alert />
     <div class="inventory">
-      <template v-if="isLoading">
+      <div v-if="isLoading" class="inventory--products">
         <v-skeleton-loader
           v-for="index in 3"
           :key="index"
-          class="inventory--product"
           type="card"
         ></v-skeleton-loader>
-      </template>
-      <template v-else>
+      </div>
+      <div v-else class="inventory--products">
         <h2>{{ productsCount }} Product(s) available for sale</h2>
         <Product
-          class="inventory--product"
           :product="product"
           v-for="product in inventory.products"
           :key="product.id"
         />
-      </template>
+      </div>
     </div>
   </div>
 </template>
@@ -62,7 +60,7 @@ export default {
   flex-direction: column;
   align-items: center;
 
-  &--product {
+  &--products {
     max-width: 70em;
     width: 100%;
   }
