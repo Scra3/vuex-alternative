@@ -43,31 +43,26 @@
 </template>
 
 <script>
-/* ----------------------- */
-/* Example with plugins */
-/* ----------------------- */
-
 import ShoppingCartTotalPrice from "./ShoppingCartTotalPrice";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "ShoppingCart",
   components: { ShoppingCartTotalPrice },
   data() {
     return {
-      products: this.$shoppingCart.state.products
+      products: this.$store.state.shoppingCart.products
     };
   },
   computed: {
-    totalPrice() {
-      return this.products.reduce((total, product) => {
-        return total + product.price;
-      }, 0);
-    }
+    ...mapGetters({
+      totalPrice: "shoppingCart/getTotalPrice"
+    })
   },
   methods: {
-    remove(product) {
-      this.$shoppingCart.remove(product);
-    }
+    ...mapMutations({
+      remove: "shoppingCart/remove"
+    })
   }
 };
 </script>
@@ -86,7 +81,9 @@ export default {
   &--products {
     display: flex;
     flex-direction: column;
-    width: 70em;
+    max-width: 70em;
+    width: 100%;
+    min-width: 30em;
 
     &--product {
       display: flex;

@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       isAlertVisible: false,
-      products: this.$shoppingCart.state.products,
+      products: this.$store.state.shoppingCart.products,
       idTimeout: null
     };
   },

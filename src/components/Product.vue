@@ -11,7 +11,7 @@
         {{ product.description }}
       </span>
       <span class="product--content--price">{{ product.price }}</span>
-      <v-btn color="primary" @click="add()">
+      <v-btn color="primary" @click="add(product)">
         Add
         <v-icon right>
           mdi-plus
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   name: "Product",
   props: {
@@ -31,9 +33,9 @@ export default {
     }
   },
   methods: {
-    add() {
-      this.$shoppingCart.add(this.product);
-    }
+    ...mapMutations({
+      add: "shoppingCart/add"
+    })
   }
 };
 </script>

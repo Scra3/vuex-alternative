@@ -31,7 +31,7 @@ export default {
   name: "App",
   data() {
     return {
-      productsInShoppingCart: this.$shoppingCart.state.products
+      productsInShoppingCart: this.$store.state.shoppingCart.products
     };
   }
 };
